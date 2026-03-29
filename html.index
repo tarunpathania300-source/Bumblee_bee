@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CreatorBoostLab Pricing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 320px;
+    }
+    h1 {
+      margin-bottom: 15px;
+    }
+    select, input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #ff7e5f;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #e66a4f;
+    }
+    .result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Price Calculator</h1><select id="service">
+  <option value="followers">Followers</option>
+  <option value="likes">Likes</option>
+  <option value="views">Views</option>
+  <option value="comments">Comments</option>
+</select>
+
+<input type="number" id="amount" placeholder="Enter quantity">
+
+<button onclick="calculatePrice()">Check Price</button>
+
+<div class="result" id="result"></div>
+
+  </div>  <script>
+    function calculatePrice() {
+      let service = document.getElementById("service").value;
+      let amount = document.getElementById("amount").value;
+      let price = 0;
+
+      if (!amount || amount <= 0) {
+        document.getElementById("result").innerText = "Enter valid amount";
+        return;
+      }
+
+      if (service === "followers") price = amount * 0.5;
+      if (service === "likes") price = amount * 0.2;
+      if (service === "views") price = amount * 0.1;
+      if (service === "comments") price = amount * 1;
+
+      document.getElementById("result").innerText = "Total Price: ₹" + price;
+    }
+  </script></body>
+</html>
